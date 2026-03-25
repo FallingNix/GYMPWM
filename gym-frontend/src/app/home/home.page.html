@@ -1,0 +1,227 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  
+    <ion-buttons  routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <p slot="end" class="contact-link" routerLink="/contact">CONTATTACI</p>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">
+        <img src="assets/icon/logo3.png" style="height: 40px; padding: 3px;" alt="Icona Profilo" />
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="hero-section">
+    <div>
+      <h1 class="hero-title">FORGIA IL TUO CORPO</h1>
+      <p class="hero-subtitle">SCATENA IL 300% DEL TUO POTENZIALE</p>
+      <ion-button routerLink="/login" class="hero-button">SCOPRI DI PIU'</ion-button>
+    </div>
+  </div>
+
+  <div class="description-section">
+    <p class="hero-description">In questa palestra non si forgiano solo i muscoli, ma disciplina, coraggio e spirito da guerriero.</p>
+    <p class="hero-lowdescription">Ogni goccia di sudore è un passo verso la <span class="highlight-text">leggenda</span>.</p>
+  </div>
+
+  <ion-grid class="ion-no-padding"> 
+  <ion-row class="ion-justify-content-center">
+    
+    <ion-col size="12" size-md="auto">
+      <ion-card class="feature-card">
+        <ion-icon name="barbell-outline" color="danger"></ion-icon>
+        <p>Attrezzatura Top</p>
+        <p>Le migliori attrezzature Technogym e Hammer Strength per allenamenti professionali.</p>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="12" size-md="auto">
+      <ion-card class="feature-card">
+        <ion-icon name="people-outline" color="danger"></ion-icon>
+        <p>Comunità</p>
+        <p>Un ambiente motivante con atleti che condividono la tua stessa determinazione.</p>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="12" size-md="auto">
+      <ion-card class="feature-card">
+        <ion-icon name="trophy-outline" color="danger"></ion-icon>
+        <p>Risultati</p>
+        <p>Programmi personalizzati per raggiungere obiettivi concreti in tempi record.</p>
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+  </ion-grid>
+
+  
+  <div class="pt-section">
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+
+      <ion-col size="12" size-lg="5" class="ion-text-center ion-text-lg-start">
+        <div class="pt-text">
+          <p class="pt-text">OGNI GUERRIERO</p>
+          <p class="pt-text">HA BISOGNO DI UNA GUIDA.</p>
+          <p class="pt-text">SCOPRI I NOSTRI <span class="highlight-text">PERSONAL TRAINER</span>.</p>
+        </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="pt-container">
+            <img src="assets/trainer1.jpg" alt="Trainer 1">
+            <img src="assets/trainer2.jpg" alt="Trainer 2">
+            <img src="assets/trainer3.jpg" alt="Trainer 3">
+          </div>
+
+        </ion-col>
+        
+        </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <div class="abbonamenti">
+    <ion-grid>
+
+      <div class="abbonamenti-text">
+        <p class="abbonamenti-text">OGNI <span class="highlight-text">GUERRIERO</span> HA IL SUO PERCORSO.</p>
+        <P class="abbonamenti-text">SCEGLI IL PIANO PERFETTO PER TE</P>
+        <P class="abbonamenti-text">E INIZIA LA TUA TRASFORMAZIONE.</P>
+      </div>
+    </ion-grid>
+  </div>
+
+  <div class="abbonamenti-card">
+    <ion-grid>
+    <ion-row class="ion-justify-content-center">
+
+    <ion-col size="12" size-md="4">
+        <ion-card class="abbonamenti-cardBasic">
+          <ion-card-header>
+            <ion-card-title>BASIC</ion-card-title>
+            <p class="subtitle">Per chi inizia il percorso</p>
+            <p class="price">€49<span>/mese</span></p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>Accesso illimitato alla palestra</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>1 sessione con trainer gratuito</ion-label>
+              </ion-item>
+              <ion-item class="item-disabled">
+                <ion-icon name="close-outline" slot="start" color="danger"></ion-icon>
+                <ion-label>Accesso all'area VIP</ion-label>
+              </ion-item>
+              <ion-item class="item-disabled">
+                <ion-icon name="close-outline" slot="start" color="danger"></ion-icon>
+                <ion-label>Programma nutrizionale</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-md="4">
+        <ion-card class="abbonamenti-cardPro">
+          <div class="popular-badge">POPOLARE</div>
+          <ion-card-header>
+            <ion-card-title>PRO</ion-card-title>
+            <p class="subtitle">Il più scelto dai nostri clienti</p>
+            <p class="price">€79<span>/mese</span></p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>Accesso illimitato alla palestra</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>4 sessioni con trainer</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>Accesso all'area VIP</ion-label>
+              </ion-item>
+              <ion-item class="item-disabled">
+                <ion-icon name="close-outline" slot="start" color="danger"></ion-icon>
+                <ion-label>Programma nutrizionale</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-md="4">
+        <ion-card class="abbonamenti-cardElite">
+          <ion-card-header>
+            <ion-card-title>ELITE</ion-card-title>
+            <p class="subtitle">Esperienza premium</p>
+            <p class="price">€129<span>/mese</span></p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>Accesso illimitato 24/7</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>8 sessioni con trainer</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>Accesso illimitato area VIP</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="checkmark-outline" slot="start" color="success"></ion-icon>
+                <ion-label>Programma nutrizionale</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+        </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  </ion-content>
+
+
+  

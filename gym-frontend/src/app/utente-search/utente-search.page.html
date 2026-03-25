@@ -1,0 +1,113 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu($event)">
+        <ion-icon slot="icon-only" color="danger" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-popover class="menu-popover" #popover>
+  <ng-template>
+    <ion-list class="menu-list">
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/dashboard-utente')">
+        <ion-icon name="person-circle-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Profilo</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/utente-schedule')">
+        <ion-icon name="barbell-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Le Mie Schede</ion-label>
+      </ion-item>
+
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/utente-booking')">
+        <ion-icon name="calendar-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Le Mie Prenotazioni</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ng-template>
+</ion-popover>
+    
+    <ion-buttons routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="dashboard-utente-section">
+    <div class="search-title">Lista PT</div>
+  </div>
+
+  <div class="search-container">
+    
+    <div *ngIf="isLoading" class="ion-text-center"><ion-spinner></ion-spinner></div>
+
+    <div class="list-card-container">
+      <div *ngFor="let trainer of trainers" class="trainer-accordion">
+        <ion-item [button]="true" (click)="toggleTrainerDetails(trainer.id)" detail="false" lines="full">
+          <ion-label>
+            <h3>{{ trainer.full_name }}</h3>
+          </ion-label>
+          <ion-icon slot="end" [name]="currentlyOpenTrainerId === trainer.id ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+        </ion-item>
+
+        <div *ngIf="currentlyOpenTrainerId === trainer.id" class="reviews-list">
+          <ion-item *ngIf="!trainer.reviews">
+            <ion-label class="ion-text-center">Caricamento recensioni...</ion-label>
+          </ion-item>
+          <ion-list *ngIf="trainer.reviews">
+            <ion-item *ngIf="trainer.reviews.length === 0">
+              <ion-label><i>Nessuna recensione per questo PT.</i></ion-label>
+            </ion-item>
+            <ion-item *ngFor="let review of trainer.reviews" lines="inset">
+              <ion-label class="ion-text-wrap">
+                <p><strong>{{ review.customer_name }}</strong></p>
+                <p class="rating-display">
+                  <ion-icon name="star" color="warning" *ngFor="let i of [].constructor(review.rating)"></ion-icon>
+                  ({{ review.rating }}/5)
+                </p>
+                <p>"{{ review.review }}"</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

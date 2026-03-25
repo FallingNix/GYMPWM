@@ -1,0 +1,89 @@
+  .login-section {
+
+    @media (max-width: 991px){
+    background:  linear-gradient(rgba(31, 31, 31, 0.7), rgba(31, 31, 31, 0.7)), url('/assets/sfondoLogin.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    }
+
+    background:  linear-gradient(rgba(31, 31, 31, 0.7), rgba(31, 31, 31, 0.7)), url('/assets/sfondoLogin.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .login-card {
+
+    @media (max-width: 991px){
+    width: 65%;
+    max-width: 500px;
+    }
+    
+    background: linear-gradient(rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.74)), url('/assets/sfondo1.jpg') no-repeat center center / cover;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid red;
+    color: black;
+  }
+  
+  .title-login {
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+    text-align: center;
+    padding: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px; 
+    margin: 5px;
+
+    ion-card-title{
+      font-size: 2.3rem;
+    }
+  }
+  
+  ion-card-content {
+  padding: 20px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+  
+  .login-form {
+    width: 70%;
+    margin-bottom: 20px;
+  
+    ion-label {
+      font-family: 'MioFontPersonalizzato', sans-serif !important;
+      font-weight: bold;
+      color: red;
+    }
+  
+    ion-input {
+      border: 1px solid #ccc;
+      box-shadow: 0 10px 30px rgba(35, 35, 35, 0.2);
+      border-radius: 0px;
+      --padding-start: 10px;
+      margin-top: 5px;
+    }
+  }
+  
+  .login-button {
+    --background: red;
+    --border-radius: 8px;
+    margin-top: 15px;
+    height: 10px;
+    width: 50%;
+  }
+  
+  .register-link {
+    text-align: left;
+    margin-top: 20px;
+  
+  }
+
+  .highlight-text {
+    color: red;
+  }

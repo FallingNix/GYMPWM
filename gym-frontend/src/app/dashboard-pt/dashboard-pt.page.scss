@@ -1,0 +1,158 @@
+.dashboard-pt-section{
+  background: linear-gradient(rgba(0, 0, 0, 0.700), rgba(0, 0, 0, 0.700)), url('/assets/sfondo.jpg') no-repeat center center / cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+
+  height: 50vh !important; 
+
+    @media (min-width: 768px) {
+    height: 50vh; 
+  }
+
+  .user-info{
+    color: red !important;
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+  }
+
+  .user-name{
+    color: red !important;
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+    font-size: 3rem;
+  }
+
+  .user-welcome{
+    color:white !important;
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+.personal-list ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --min-height: 70px; 
+  margin-top: 50px;
+
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+
+.personal-list ion-item {
+  --padding-start: 400px;
+  --padding-end: 400px;
+  --min-height: 70px; 
+  }
+
+.user-container {
+  display: flex;
+  align-items: center;
+}
+
+}
+
+
+
+
+.clients-list-container {
+  max-width: 800px;    
+  margin-left: auto;  
+  margin-right: auto;  
+  margin-top: 32px;
+  margin-bottom: 32px;
+
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 8px 0;
+}
+
+
+.clients-list-container ion-list-header {
+  h2 {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.2rem;
+    padding-left: 16px;
+  }
+}
+
+
+.clients-list-container ion-item {
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  --border-color: #f0f0f0;
+
+  
+  ion-icon[slot="start"] {
+    
+    font-size: 1.3rem; 
+    color: var(--ion-color-primary);
+    margin-right: 16px;
+    align-self: center; 
+  }
+
+  
+  ion-label {
+    h3 {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    p {
+      display: flex;
+      align-items: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 4px;
+
+      
+      ion-icon {
+        margin-right: 8px;
+        font-size: 1rem;
+        color: #888;
+      }
+    }
+  }
+}
+
+
+.footer-section {
+  background-color: rgb(192, 33, 33);
+  padding: 30px 20px;
+  margin-top: 250px;
+}
+
+.footer-text{
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color:black;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 0.7rem;
+  }
+}
+
+
+.menu-popover  {
+  --width: 180px;
+  height: 100vh;
+  gap: 10px;
+
+  .menu-text{
+    color:black !important;
+  }
+}

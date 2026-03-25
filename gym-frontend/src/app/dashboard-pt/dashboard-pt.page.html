@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu($event)">
+        <ion-icon slot="icon-only" color="danger" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-popover class="menu-popover" #popover>
+  <ng-template>
+    <ion-list class="menu-list">
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/pt-schedule')">
+        <ion-icon name="barbell-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Esercizi e Schede</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/pt-calendar')">
+        <ion-icon name="calendar-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Calendario Prenotazioni</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ng-template>
+</ion-popover>
+    
+    <ion-buttons  routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="dashboard-pt-section">
+    <div class="user-info" *ngIf="user">
+      <h1 class="user-name">Ciao, {{ user.full_name }}!</h1>
+      <p class="user-welcome">Benvenuto nella tua area personale.</p>
+    </div>
+    <div class="user-info" *ngIf="!user">
+      <p class="user-name">Caricamento dati...</p>
+    </div>
+  </div>
+
+  <ion-list class="personal-list">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <div slot="end" class="user-container" *ngIf="user">
+        <ion-label color="high">{{ user.username }}</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <div slot="end" class="user-container" *ngIf="user">
+        <ion-label color="high">{{ user.email }}</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nome e Cognome</ion-label>
+      <div slot="end" class="user-container" *ngIf="user">
+        <ion-label color="high">{{ user.full_name }}</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>N. Telefono</ion-label>
+      <div slot="end" class="user-container" *ngIf="user">
+        <ion-label color="high">{{ user.phone }}</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ruolo</ion-label>
+      <div slot="end" class="user-container" *ngIf="user">
+        <ion-label color="high">{{ user.role }}</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div class="clients-list-container">
+  <ion-list class="ion-margin-top">
+    <ion-list-header>
+      <ion-label color="dark">
+        <h2>I Tuoi Clienti Assegnati</h2>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item *ngIf="!assignedClient || assignedClient.length === 0" lines="none">
+      <ion-label>
+        <p class="ion-text-center"><i>Al momento non hai clienti assegnati.</i></p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let customer of assignedClient" lines="inset">
+      <ion-label>
+        <h3>{{ customer.full_name }}</h3>
+        <p>
+          <ion-icon name="mail-outline" color="danger"></ion-icon>
+          {{ customer.email }}
+        </p>
+        <p>
+          <ion-icon name="call-outline" color="danger"></ion-icon>
+          {{ customer.phone }}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  </div>
+
+
+<div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

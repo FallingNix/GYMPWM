@@ -1,0 +1,132 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu($event)">
+        <ion-icon slot="icon-only" color="danger" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-popover class="menu-popover" #popover>
+  <ng-template>
+    <ion-list class="menu-list">
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/dashboard-admin')">
+        <ion-icon name="person-circle-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Profilo</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ng-template>
+</ion-popover>
+    
+    <ion-buttons routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="admin-list-section">
+    <div class="list-title">Assegnazione Utenti</div>
+  </div>
+
+  <ion-grid>
+  <ion-row class="ion-align-items-start">
+
+    <ion-col size="12" size-md="6">
+      <div class="list-container">
+        <ion-list>
+          <ion-list-header>
+            <h2>Utenti</h2>
+          </ion-list-header>
+          <ion-item 
+            *ngFor="let user of users" 
+            (click)="selectUser(user.id)" 
+            [class.selected]="user.id === selectedUserId"
+            button>
+            <ion-label>
+              <h3>{{ user.full_name }}</h3>
+              <p>{{ user.email }}</p>
+              <p *ngIf="user.trainer_id" class="assigned-trainer">
+                <ion-icon name="link-outline"></ion-icon>
+                Assegnato al PT: {{ trainerMap[user.trainer_id] }}
+              </p>
+            </ion-label>
+            <ion-button *ngIf="user.trainer_id" fill="clear" color="medium" (click)="unassign(user.id)">
+              <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-col>
+
+    <ion-col size="12" size-md="6">
+      <div class="list-container">
+        <ion-list>
+          <ion-list-header>
+            <h2>Personal Trainers</h2>
+          </ion-list-header>
+          <ion-item 
+            *ngFor="let trainer of trainers" 
+            (click)="selectTrainer(trainer.id)"
+            [class.selected]="trainer.id === selectedTrainerId"
+            button>
+            <ion-label>
+              <h3>{{ trainer.full_name }}</h3>
+              <p>{{ trainer.email }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-col>
+    
+  </ion-row>
+</ion-grid>
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar>
+      <ion-button
+        expand="block"
+        color="danger"
+        class="ion-margin"
+        (click)="assignSelectedTrainer()"
+        [disabled]="!selectedUserId || !selectedTrainerId">
+        Assegna Trainer a Utente
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+
+
+  <div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

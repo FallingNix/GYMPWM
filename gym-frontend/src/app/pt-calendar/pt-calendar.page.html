@@ -1,0 +1,148 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu($event)">
+        <ion-icon slot="icon-only" color="danger" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-popover class="menu-popover" #popover>
+  <ng-template>
+    <ion-list class="menu-list">
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/dashboard-pt')">
+        <ion-icon name="person-circle-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Profilo</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/pt-schedule')">
+        <ion-icon name="barbell-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Esercizi e Schede</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ng-template>
+</ion-popover>
+
+    <ion-buttons routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="dashboard-pt-section">
+    <div class="calendar-title">Il Mio Calendario</div>
+  </div>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="8" size-lg="6">
+
+        <div class="form-container ion-padding">
+          <ion-list>
+            <ion-list-header>
+              <h2>Crea Nuova Disponibilità</h2>
+            </ion-list-header>
+            
+            <ion-item>
+              <ion-label position="stacked">Inizio</ion-label>
+              <ion-datetime-button datetime="start-datetime"></ion-datetime-button>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label position="stacked">Fine</ion-label>
+              <ion-datetime-button datetime="end-datetime"></ion-datetime-button>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label position="stacked">Numero massimo di clienti</ion-label>
+              <ion-input type="number" [(ngModel)]="newSlot.max_clients" name="max_clients"></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button expand="block" (click)="createSlot()" class="ion-margin-top" color="danger">Crea Slot</ion-button>
+        </div>
+
+      <div class="form-container scrollable-list-container ion-margin-top">
+        <ion-list class="ion-margin-top">
+          <ion-list-header>
+            <h2>Slot Creati</h2>
+          </ion-list-header>
+          <ion-item *ngIf="mySlots.length === 0">
+            <ion-label class="ion-text-center"><i>Nessuna disponibilità inserita.</i></ion-label>
+          </ion-item>
+          <ion-item *ngFor="let slot of mySlots">
+            <ion-icon name="calendar-clear-outline" slot="start" color="danger"></ion-icon>
+            <ion-label>
+              <h3>Dal: {{ slot.start_time | date:'dd/MM/yyyy HH:mm' }}</h3>
+              <p>Al: {{ slot.end_time | date:'dd/MM/yyyy HH:mm' }}</p>
+              <p>
+                <strong>Stato: {{ slot.booked_count }} / {{ slot.max_clients }} prenotati</strong>
+              </p>
+            </ion-label>
+            <ion-button fill="clear" color="danger" (click)="deleteSlot(slot.id)">
+              <ion-icon slot="icon-only" name="trash-outline" color="danger"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+  </ion-content>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime 
+      id="start-datetime" 
+      [(ngModel)]="newSlot.start_time" 
+      [min]="minDate" 
+      name="start_time">
+    </ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime 
+      id="end-datetime" 
+      [(ngModel)]="newSlot.end_time" 
+      [min]="minDate" 
+      name="end_time">
+    </ion-datetime>
+  </ng-template>
+</ion-modal>

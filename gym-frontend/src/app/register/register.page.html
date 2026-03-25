@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons  routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="register-section">
+
+    <ion-card class="register-card">
+      <ion-card-header class="title-register">
+        <ion-card-title> <span class="highlight-text">REGISTRATI</span></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="register-form">
+          <ion-label>USERNAME:</ion-label>
+          <ion-input type="username" placeholder="Il tuo username" [(ngModel)]="regData.username"></ion-input>
+        </div>
+
+        <div class="register-form">
+          <ion-label>EMAIL:</ion-label>
+          <ion-input type="email" placeholder="La tua email"  [(ngModel)]="regData.email"></ion-input>
+        </div>
+
+        <div class="register-form">
+          <ion-label>NOME E COGNOME :</ion-label>
+          <ion-input type="fullname" placeholder="Il tuo nome e cognome"  [(ngModel)]="regData.full_name"></ion-input>
+        </div>
+
+        <div class="register-form">
+          <ion-label>N. TELEFONO:</ion-label>
+          <ion-input type="phone" placeholder="Il tuo n. di telefono"  [(ngModel)]="regData.phone"></ion-input>
+        </div>
+
+        <div class="register-form">
+          <ion-label>PASSWORD:</ion-label>
+  
+          <ion-input [type]="passwordFieldType" placeholder="La tua password"  [(ngModel)]="regData.password">
+            <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()">
+             <ion-icon [name]="passwordIcon" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </div>
+
+        <div class="register-form">
+          <ion-label>RUOLO:</ion-label>
+          <ion-item class="input-item">
+            <ion-select [(ngModel)]="regData.role" interface="popover">
+              <ion-select-option value="utente">Utente</ion-select-option>
+              <ion-select-option value="PT">Personal Trainer</ion-select-option>
+              <ion-select-option value="admin">Admin</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div *ngIf="regData.role === 'PT' || regData.role === 'admin'" class="register-form">
+          <ion-label>CODICE DI VERIFICA:</ion-label>
+            <ion-input type="text" [(ngModel)]="regData.verificationCode" placeholder="Inserisci il codice"></ion-input>
+        </div>
+
+
+        <ion-button expand="full"  class="register-button" (click)="register()" >
+          <img src="assets/freccia.jpg" style="height: 40px; padding: 3px;" alt="Freccia" />
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

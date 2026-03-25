@@ -1,0 +1,77 @@
+.contact-section{
+    background: linear-gradient(rgba(0, 0, 0, 0.700), rgba(0, 0, 0, 0.700)), url('/assets/sfondo.jpg') no-repeat center center / cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+      height: 50vh; 
+
+    @media (min-width: 768px) {
+    height: 50vh; 
+  }
+}
+
+
+.contact-title{
+  font-family: 'MioFontPersonalizzato', sans-serif !important; 
+  color: red !important; 
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-size: 2.5rem; 
+
+  @media (min-width: 768px) {
+    font-size: 5rem; 
+  }
+}
+
+
+.contact-list ion-item {
+  --padding-start: 30px;
+  --padding-end: 30px;
+  --min-height: 70px; 
+  margin-top: 80px;
+}
+
+.phone-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+
+.contact-list ion-item {
+  --padding-start: 400px;
+  --padding-end: 400px;
+  --min-height: 70px; 
+}
+
+
+.phone-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+}
+
+
+.footer-section {
+  background-color: rgb(192, 33, 33);
+  padding: 30px 20px;
+  margin-top: 250px;
+}
+
+.footer-text{
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color:black;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 0.7rem;
+  }
+}

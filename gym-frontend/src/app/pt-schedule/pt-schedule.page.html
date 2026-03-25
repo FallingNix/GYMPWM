@@ -1,0 +1,183 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu($event)">
+        <ion-icon slot="icon-only" color="danger" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-popover class="menu-popover" #popover>
+  <ng-template>
+    <ion-list class="menu-list">
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/dashboard-pt')">
+        <ion-icon name="person-circle-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Profilo</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/pt-calendar')">
+        <ion-icon name="calendar-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Calendario Prenotazioni</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ng-template>
+</ion-popover>
+    
+    <ion-buttons routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="dashboard-pt-section">
+    <div class="schedule-title">Esercizi-Schede</div>
+  </div>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-start">
+
+      <ion-col size="12" size-lg="5">
+        
+        <div class="form-container">
+          <ion-list-header><h2>Crea Nuovo Esercizio</h2></ion-list-header>
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Nome Esercizio</ion-label>
+              <ion-input [(ngModel)]="exerciseData.name" name="name" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Gruppo Muscolare</ion-label>
+              <ion-input [(ngModel)]="exerciseData.muscle_group" name="muscle_group"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Descrizione</ion-label>
+              <ion-textarea [(ngModel)]="exerciseData.description" name="description"></ion-textarea>
+            </ion-item>
+          </ion-list>
+          <ion-button color="danger" expand="block" (click)="saveExercise()" class="ion-margin-top">Salva Esercizio</ion-button>
+        </div>
+
+        <div class="form-container ion-margin-top">
+          <ion-list-header><h2>Crea e Assegna Nuova Scheda</h2></ion-list-header>
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Nome Scheda</ion-label>
+              <ion-input [(ngModel)]="planData.name" name="planName" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Descrizione Scheda</ion-label>
+              <ion-textarea [(ngModel)]="planData.description" name="planDescription"></ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Assegna a Cliente (Opzionale)</ion-label>
+  
+              <ion-select class="testo-bianco" [(ngModel)]="planData.customer_id" interface="popover">
+                <ion-select-option  [value]="null">Non assegnare adesso</ion-select-option>
+                <ion-select-option *ngFor="let client of assignedClients" [value]="client.id">
+                  {{ client.full_name }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <ion-button expand="block" color="success" (click)="savePlan()" class="ion-margin-top">Salva Scheda</ion-button>
+        </div>
+      </ion-col>
+
+      <ion-col size="12" size-lg="7">
+
+        <div class="form-container scrollable-list-container">
+          <ion-list-header><h2>Libreria Esercizi (Seleziona per la scheda)</h2></ion-list-header>
+          <ion-list>
+            <ion-item *ngFor="let exercise of exercises">
+              <ion-checkbox slot="start" (ionChange)="toggleExerciseSelection(exercise.id, $event)"></ion-checkbox>
+              <ion-label>
+                <h3>{{ exercise.name }}</h3>
+                <p>{{ exercise.muscle_group }}</p>
+                <p>{{ exercise.description }}</p>
+              </ion-label>
+              <ion-button fill="clear" color="danger" (click)="deleteExercise(exercise.id)">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+        
+<div class="form-container scrollable-list-container ion-margin-top">
+  <ion-list-header><h2>Le Mie Schede Create</h2></ion-list-header>
+  <ion-list>
+    <ion-item *ngIf="myPlans.length === 0">
+      <ion-label class="ion-text-center"><i>Nessuna scheda ancora creata.</i></ion-label>
+    </ion-item>
+    
+    <div *ngFor="let plan of myPlans">
+      <ion-item [button]="true" (click)="togglePlanDetails(plan.id)" detail="false" lines="inset">
+        <ion-label>
+          <h3>{{ plan.name }}</h3>
+          <p>{{ plan.description }}</p>
+        </ion-label>
+
+        <ion-button fill="clear" color="danger" (click)="deletePlan(plan.id); $event.stopPropagation();">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+
+        <ion-icon slot="end" color="danger" [name]="currentlyOpenPlanId === plan.id ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+      </ion-item>
+
+      <div *ngIf="currentlyOpenPlanId === plan.id" class="exercise-details-list">
+        <ion-item *ngIf="!plan.exercises" lines="none">
+          <ion-label class="ion-text-center">Caricamento esercizi...</ion-label>
+        </ion-item>
+        <ion-list *ngIf="plan.exercises">
+          <ion-item *ngFor="let exercise of plan.exercises" lines="full">
+            <ion-label class="ion-text-wrap">
+              <h4>{{ exercise.name }}</h4>
+              <p><i>{{ exercise.muscle_group }}</i></p>
+              <p><i>{{ exercise.description }}</i></p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-list>
+</div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

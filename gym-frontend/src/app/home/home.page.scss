@@ -1,0 +1,339 @@
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.700), rgba(0, 0, 0, 0.700)), url('/assets/sfondo.jpg') no-repeat center center / cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+ 
+  height: 50vh; 
+
+  
+  @media (min-width: 768px) {
+    height: 80vh; 
+  }
+}
+
+.contact-link{
+  font-family: 'MioFontPersonalizzato', sans-serif !important; 
+  color:red !important;
+}
+
+.hero-title {
+  font-family: 'MioFontPersonalizzato', sans-serif !important; 
+  color: red !important; 
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+
+
+  font-size: 2.5rem; 
+
+ 
+  @media (min-width: 768px) {
+    font-size: 3.8rem; 
+  }
+}
+
+.hero-subtitle {
+  color: white !important; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+
+  
+  font-size: 1rem;
+
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem; 
+  }
+}
+
+.hero-button {
+  font-family: 'MioFontPersonalizzato', sans-serif !important; 
+  --background: red;
+  --color: white;
+  --font-weight: bold;
+  --border-radius: 30px;
+  --padding-start: 30px;
+  --padding-end: 30px;
+  height: 50px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+}
+
+.description-section {
+  text-align: center; 
+  padding: 40px 20px; 
+  background-color: white; 
+}
+
+
+.hero-description {
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color: #383838; 
+  font-size: 0.65rem;
+  margin: 0 auto ;
+  font-style: italic;
+
+  @media (min-width: 768px) {
+    font-size: 2rem; 
+  }
+}
+
+.hero-lowdescription {
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color: #383838; 
+  font-size: 0.65rem;
+  font-style: italic;
+
+  @media (min-width: 768px) {
+    font-size: 2rem; 
+  }
+
+  .highlight-text {
+  color: red;
+}
+}
+
+
+// Sezione Card
+.feature-card {
+  text-align: center;
+  width: 300px;
+  height: 200px;
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color: #383838; 
+  padding: 10px;
+  background: #ece5d3; 
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-bottom: 8px solid var(--ion-color-danger);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-card ion-icon {
+  font-size: 3rem; 
+  margin-bottom: 10px;
+}
+
+ion-grid > ion-row > ion-col {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+ion-col {
+  display: flex;
+  justify-content: center;
+}
+
+
+// Sezione Pt
+
+.pt-section {
+  background-color: #1a1a1a;
+  padding: 20px 20px;
+  margin-top: 30px;
+}
+
+.pt-text {
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color:white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.highlight-text {
+  color: red;
+}
+
+.pt-container {
+  width: 100%;
+  height: 350px; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  gap: 10px;
+}
+
+.pt-container img {
+  width: 30%; 
+  height: 80%; 
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all ease-in-out 0.5s;
+}
+
+.pt-container img:hover {
+  width: 40%;
+}
+
+
+@media (max-width: 991px) {
+  .pt-text-container {
+    text-align: center; 
+    margin-bottom: 30px; 
+  }
+}
+
+
+@media (min-width: 992px) {
+
+  .pt-text{
+    text-align: center;
+  }
+
+  .pt-container {
+    height: 700px; 
+  }
+}
+
+
+// Sezione Abbonamenti
+.abbonamenti{
+  margin-top: 10px;
+  padding: 60px 10px;
+
+}
+
+.abbonamenti-text{
+  @media (min-width: 992px) {
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  text-align: center; 
+  font-size: 1.9rem;
+  }
+
+  @media (max-width: 991px) {
+    text-align: center;
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+    font-size: 1.3rem;
+  }
+}
+
+.abbonamenti-cardBasic,
+.abbonamenti-cardElite {
+  background: black;
+  color: white;
+  border-radius: 15px;
+  padding: 40px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: visible; 
+}
+
+.abbonamenti-cardPro {
+  background: black;
+  color: white;
+  position: absolute;
+  top: -15px;
+  padding: 40px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 4px solid var(--ion-color-danger);
+}
+
+
+.popular-badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: var(--ion-color-danger);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: white;
+  text-transform: uppercase; 
+
+  span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #aaa;
+    text-transform: none;
+  }
+}
+
+ion-card-header,
+ion-card-content,
+ion-list,
+ion-item {
+  background: black !important;
+  --background: black !important;
+  color: white;
+}
+
+.abbonamenti-card ion-card-header {
+  color: white;
+  
+}
+
+.abbonamenti-card ion-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.subtitle {
+  color: rgb(175, 175, 175);
+}
+
+.item-disabled ion-label, .item-disabled ion-icon {
+    color: #ececec;
+}
+
+
+@media (max-width: 767px) {
+  .abbonamenti-cardBasic,
+  .abbonamenti-cardPro,
+  .abbonamenti-cardElite {
+    
+    padding: 30px;
+  }
+
+  .price {
+    
+    font-size: 2.5rem;
+  }
+
+  .abbonamenti-cardPro {
+    
+    position: relative;
+    top: 0;
+  }
+}
+
+
+.footer-section {
+  background-color: rgb(192, 33, 33);
+  padding: 30px 20px;
+  margin-top: 100px;
+}
+
+.footer-text{
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color:black;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 0.7rem;
+  }
+}

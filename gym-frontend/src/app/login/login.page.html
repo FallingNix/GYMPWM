@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons  routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="login-section">
+
+    <ion-card class="login-card">
+      <ion-card-header class="title-login">
+        <ion-card-title> <span class="highlight-text">ACCEDI</span></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="login-form">
+          <ion-label>USERNAME:</ion-label>
+          <ion-input type="username" placeholder="Il tuo username" [(ngModel)]="loginData.username"></ion-input>
+        </div>
+
+        <div class="login-form">
+          <ion-label>PASSWORD:</ion-label>
+          <ion-input type="password" placeholder="La tua password"  [(ngModel)]="loginData.password"></ion-input>
+        </div>
+
+        <ion-button expand="full"  class="login-button" (click)="login()" >
+          <img src="assets/freccia.jpg" style="height: 40px; padding: 3px;" alt="Freccia" />
+        </ion-button>
+
+        <div class="register-link">
+          <p>Non hai un account? <span class="highlight-text" routerLink="/register">Registrati</span></p>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

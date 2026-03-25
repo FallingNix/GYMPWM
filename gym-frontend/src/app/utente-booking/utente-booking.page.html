@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu($event)">
+        <ion-icon slot="icon-only" color="danger" name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-popover class="menu-popover" #popover>
+  <ng-template>
+    <ion-list class="menu-list">
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/dashboard-utente')">
+        <ion-icon name="person-circle-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Profilo</ion-label>
+      </ion-item>
+      
+      <ion-item class="menu-item" [button]="true" (click)="navigateTo('/utente-schedule')">
+        <ion-icon name="barbell-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Le Mie Schede</ion-label>
+      </ion-item>
+
+      <ion-item class="menu-item" [button]="true" lines="none" (click)="navigateTo('/utente-search')">
+        <ion-icon name="search-outline" color="danger"></ion-icon>
+        <ion-label class="menu-text">Cerca un PT</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ng-template>
+</ion-popover>
+    
+    <ion-buttons routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="dashboard-utente-section">
+    <div class="booking-title">Le Mie Prenotazioni</div>
+  </div>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-lg="10">
+
+        <div class="booking-section-container">
+          <ion-list-header>
+            <h2 *ngIf="currentUser && currentUser.assignedTrainerName">Disponibilità di: {{ currentUser.assignedTrainerName }}</h2>
+            <h2 *ngIf="!currentUser || !currentUser.assignedTrainerName">Disponibilità</h2>
+          </ion-list-header>
+          <div class="scrollable-content">
+            <div *ngIf="isLoading" class="ion-text-center"><ion-spinner></ion-spinner></div>
+            <div *ngIf="!isLoading">
+              <div *ngIf="assignedTrainerSlots.length === 0" class="info-message">
+                <p><i>Il tuo PT non ha ancora inserito disponibilità.</i></p>
+              </div>
+              <ion-card *ngFor="let slot of assignedTrainerSlots">
+                <ion-card-content>
+                  <ion-item lines="none">
+                    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+                    <ion-label>
+                      <p><strong>Dal:</strong> {{ slot.start_time | date:'dd/MM/yyyy HH:mm' }}</p>
+                      <p><strong>Al:</strong> {{ slot.end_time | date:'dd/MM/yyyy HH:mm' }}</p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-button expand="block" (click)="bookSlot(slot)" color="danger">Prenota Ora</ion-button>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-section-container ion-margin-top">
+          <ion-list-header>
+            <h2>Le Mie Prenotazioni</h2>
+          </ion-list-header>
+          <div class="scrollable-content">
+            <div *ngIf="myBookings.length === 0" class="info-message">
+              <p><i>Nessuna prenotazione trovata.</i></p>
+            </div>
+            <ion-card *ngFor="let booking of myBookings">
+              <ion-card-content>
+                <ion-item lines="none">
+                  <ion-label>
+                    <h3>Lezione con {{ booking.trainer_name }}</h3>
+                    <p>{{ booking.start_time_formatted }}</p>
+                    <p>{{ booking.start_time_hours }} - {{ booking.end_time_hours }}</p>
+                  </ion-label>
+                  <ion-note slot="end" [color]="booking.status === 'confirmed' ? 'success' : 'warning'">{{ booking.status }}</ion-note>
+                </ion-item>
+                <ion-button fill="outline" color="danger" (click)="cancelBooking(booking.booking_id)">
+                  Cancella
+                </ion-button>
+                <ion-button fill="outline" (click)="openRatingPrompt(booking)">
+                    Recensione
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  </ion-content>

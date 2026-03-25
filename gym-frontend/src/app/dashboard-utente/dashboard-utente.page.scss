@@ -1,0 +1,96 @@
+.dashboard-utente-section{
+  background: linear-gradient(rgba(0, 0, 0, 0.700), rgba(0, 0, 0, 0.700)), url('/assets/sfondo.jpg') no-repeat center center / cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+
+  height: 50vh !important; 
+
+    @media (min-width: 768px) {
+    height: 50vh; 
+  }
+
+  .user-info{
+    color: red !important;
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+  }
+
+  .user-name{
+    color: red !important;
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+    font-size: 3rem;
+  }
+
+  .user-welcome{
+    color:white !important;
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+.personal-list ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --min-height: 70px; 
+  margin-top: 50px;
+
+
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+
+.personal-list ion-item {
+  --padding-start: 400px;
+  --padding-end: 400px;
+  --min-height: 70px; 
+  }
+
+.user-container {
+  display: flex;
+  align-items: center;
+}
+
+}
+
+
+
+.menu-popover  {
+  --width: 180px;
+  height: 100vh;
+  gap: 10px;
+
+  .menu-text{
+    color:black !important;
+  }
+}
+
+
+.footer-section {
+  background-color: rgb(192, 33, 33);
+  padding: 30px 20px;
+  margin-top: 250px;
+}
+
+.footer-text{
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color:black;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 0.7rem;
+  }
+}
+

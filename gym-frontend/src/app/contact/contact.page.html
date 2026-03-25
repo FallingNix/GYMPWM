@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-buttons  routerLink="/home">
+      <img src="assets/icon/logo.png" style="height: 65px; padding: 0px;" alt="Logo Palestra" />
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">
+        <img src="assets/icon/logo3.png" style="height: 40px; padding: 3px;" alt="Icona Profilo" />
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="contact-section">
+    <h1 class="contact-title">CONTATTI</h1>
+  </div>
+
+  <ion-list class="contact-list">
+    
+    <ion-item>
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      <ion-label>Gianluca Mezzatesta</ion-label>
+    
+      <div slot="end" class="phone-container">
+        <ion-icon name="call-outline" color="medium"></ion-icon>
+        <ion-label color="high">327 815 2659</ion-label>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      <ion-label>Gabriele Cammarata</ion-label>
+    
+      <div slot="end" class="phone-container">
+        <ion-icon name="call-outline" color="medium"></ion-icon>
+        <ion-label color="high">320 302 8689</ion-label>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      <ion-label>Antonio Bulgarello</ion-label>
+    
+      <div slot="end" class="phone-container">
+        <ion-icon name="call-outline" color="medium"></ion-icon>
+        <ion-label color="high">338 724 4238</ion-label>
+      </div>
+    </ion-item>
+
+</ion-list>
+
+
+
+<div class="footer-section">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+
+        <ion-col size="12" size-lg="7" class="ion-text-center ion-text-lg-start">
+          <div class="footer-text">
+            <p class="footer-text">Progetto di Programmazione Web e Mobile</p>
+            <p class="footer-text">Progettato e Sviluppato Da</p>
+            <p class="footer-text">Gianluca Mezzatesta | Gabriele Cammarata | Antonio Bulgarello</p>
+            <p class="footer-text">Tutte le immagini, informazioni, riferimenti sono frutto di fantasia o generate artificialmente al fine accademico</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-lg="5">
+          <div class="footer-container">
+            <img src="assets/logoUnipa.jpg" alt="Logo Palestra">
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+</ion-content>

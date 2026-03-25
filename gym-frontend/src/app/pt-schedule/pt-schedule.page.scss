@@ -1,0 +1,128 @@
+
+.dashboard-pt-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/sfondo.jpg') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50vh !important; 
+
+    @media (min-width: 768px) {
+    height: 50vh; 
+  }
+
+  .schedule-title {
+    color: red !important;
+    font-family: 'MioFontPersonalizzato', sans-serif !important;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 3rem;
+  }
+}
+
+
+.form-container {
+  background-color: #121212;
+  border:4px solid #e74c3c;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #ffffff; 
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-list-header h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'MioFontPersonalizzato', sans-serif;
+
+    color: #ffffff;
+  }
+
+  ion-item {
+    --background: transparent;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --highlight-color-focused: #e74c3c;
+    --padding-start: 5px;
+  }
+  
+  ion-label {
+    font-family: 'MioFontPersonalizzato', sans-serif;
+    color: #ffffff !important;
+  }
+
+  ion-input,
+  ion-textarea {
+    --color: #ffffff;
+  }
+
+  ion-select {
+  --color: #ffffff ;
+  --placeholder-color: #ffffff ;
+  --placeholder-opacity: 0.8 ;
+}
+  
+
+  .empty-list-message {
+    font-style: italic;
+    text-align: center;
+    color: #aaa; 
+    padding: 20px 0;
+  }
+}
+
+
+.scrollable-list-container {
+  max-height: 52vh; 
+  overflow-y: auto;
+}
+
+
+.exercise-description {
+  font-style: italic;
+  font-family: sans-serif;
+  font-size: 0.85em;
+  color: #888;
+  white-space: normal;
+  padding-top: 5px;
+}
+
+
+ion-select.testo-bianco {
+  color: #ffffff !important;
+  --placeholder-color: #ffffff !important;
+}
+
+
+
+
+
+.footer-section {
+  background-color: rgb(192, 33, 33);
+  padding: 30px 20px;
+  margin-top: 250px;
+}
+
+.footer-text{
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+  color:black;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 0.7rem;
+  }
+}
+
+
+
+.menu-popover  {
+  --width: 180px;
+  height: 100vh;
+  gap: 10px;
+
+  .menu-text{
+    color:black !important;
+  }
+}
